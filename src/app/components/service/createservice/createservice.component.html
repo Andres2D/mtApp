@@ -1,0 +1,131 @@
+<div class="container mt-5">
+  <div class="container">
+    <h3>Crear servicio</h3>
+  </div>
+  <form [formGroup]="service" class="container col-6" *ngIf="clientesLoaded">
+    <div class="form-group">
+      <label for="clientInfo">Cliente</label>
+      <div class="container row">
+        <select formControlName="clientInfo" class="form-control col-11" (change)="GetVehicles()">
+          <option *ngFor="let cliente of clientesData; let i = index;" [value]="cliente.id_usuario">{{cliente.nombre}} {{cliente.p_apellido}} {{cliente.s_apellido}} 
+            - <p style="font-style: italic; color: grey;">{{cliente.email}}</p></option>
+        </select>
+        <i style="cursor: pointer; color: green; font-size: 30px;" class="fas fa-plus-square col-1 mt-1"
+        data-toggle="modal" data-target="#crearCliente"></i>
+      </div> 
+    </div>
+    <div class="form-group" *ngIf="dataIsLoaded">
+      <label for="vehicleInfo">Vehiculo</label>
+      <div class="container row">
+        <select formControlName="vehicleInfo" class="form-control col-11" id="exampleFormControlSelect1">
+          <option *ngFor="let vehicle of userVehiclesData" [value]="vehicle.vehiculo.id_vehiculo">{{vehicle.vehiculo.placa}}</option>
+        </select>
+        <i style="cursor: pointer; color: green; font-size: 30px;" class="fas fa-plus-square col-1 mt-1"
+        data-toggle="modal" data-target="#crearVehiculo"></i>
+      </div> 
+    </div>
+    <div class="form-group" *ngIf="dataIsLoaded">
+      <label for="workerInfo">Mecánico</label>
+      <div class="container row" *ngIf="true">
+        <select formControlName="workerInfo" class="form-control col-11">
+          <option *ngFor="let mecanico of mecanicosData; let i = index;" [value]="mecanico.id_usuario">{{mecanico.nombre}} {{mecanico.p_apellido}} {{mecanico.s_apellido}} </option>
+        </select>
+      </div> 
+    </div>
+
+    <div class="form-group" *ngIf="dataIsLoaded">
+      <label for="workerInfo">Observaciones</label>
+      <div class="container row">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div> 
+    </div>
+
+    <button class="btn btn-success mr-2" (click)="SaveService()">Guardar</button>
+    <button type="submit" class="btn btn-danger" [routerLink]="['/services']" routerLinkActive="router-link-active" >Cancelar</button>
+  </form>
+</div>
+<br>
+<br>
+<br>
+<!-- Modal create client -->
+<div id="crearCliente" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Crear cliente</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="client">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" formControlName="name" class="form-control" placeholder="Andres">
+            </div>
+            <div class="form-group">
+              <label for="f_lastName">Primer apellido</label>
+              <input type="text" formControlName="f_lastName" class="form-control" placeholder="Alcaraz">
+            </div>
+            <div class="form-group">
+              <label for="s_lastName">Segundo apellido</label>
+              <input type="text" formControlName="s_lastName" class="form-control" placeholder="Cataño">
+            </div>
+            <div class="form-group">
+              <label for="s_lastName">Nombre de usuario</label>
+              <input type="text" formControlName="userName" class="form-control" placeholder="andres2d">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefono</label>
+              <input type="text" formControlName="phone" class="form-control" placeholder="1234567">
+            </div>
+            <div class="form-group">
+              <label for="email">Correo</label>
+              <input type="email" formControlName="email" class="form-control" placeholder="ejemplo@gmail.com">
+            </div>
+          </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="SaveClient()" data-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  </div>
+
+<!-- Modal create vehicle -->
+<div id="crearVehiculo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Crear vehiculo</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="vehicle">
+            <div class="form-group">
+              <label for="placa">Placa</label>
+              <input type="text" formControlName="placa" class="form-control" placeholder="ABC12A">
+            </div>
+            <div class="form-group">
+              <label>Tipo vehiculo</label>
+              <select class="form-control" formControlName="tipo_vehiculo">
+                <option>4T</option>
+                <option>2T</option>
+              </select>
+            </div>
+          </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="SaveUserVehicle()" data-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  </div>

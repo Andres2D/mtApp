@@ -1,0 +1,105 @@
+<div class="container col-6">
+  <br>
+  <br>
+  <div class="container">
+      <app-loading *ngIf="isLoading" class="col-12 text-center" style="font-size: 30px;"></app-loading>
+  </div>
+  <div *ngIf="!isLoading" class="card">
+    <h5 class="card-header text-center">Editar usuario</h5>
+    <div class="card-body">
+      <form [formGroup]="forma">
+          <div class="form-row mb-2">
+            <div class="col">
+              <label for="userName">Nombre de usuario</label>
+            </div>
+            <div class="col">
+              <input type="text" formControlName="userName" class="form-control" disabled>
+            </div>
+          </div>
+          <div class="form-row mb-2">
+            <div class="col">
+              <label for="name">Nombres</label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" formControlName="name">
+            </div>
+          </div>
+          <div class="form-row mb-2">
+            <div class="col">
+              <label for="p_lastName">Primer apellido</label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" formControlName="p_lastName">
+            </div>
+          </div>
+          <div class="form-row mb-2">
+            <div class="col">
+              <label for="s_lastName">Segundo apellido</label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" formControlName="s_lastName">
+            </div>
+          </div>
+          <div class="form-row mb-2">
+            <div class="col">
+              <label for="phone">Telefono</label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" formControlName="phone">
+            </div>
+          </div>
+          <div class="form-row mb-2">
+            <div class="col">
+              <label for="email">Email</label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" formControlName="email">
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#changePassword" data-dismiss="modal">Cambiar contraseña</button>
+          </div>
+      </form>
+    </div>
+    <div class="card-footer d-flex">
+        <button type="button" class="btn btn-success ml-auto mr-2" (click)="SaveConfiguration()" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-danger" [routerLink]="['/inicio']" routerLinkActive="router-link-active" >Cerrar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal change password -->
+<div id="changePassword" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Cambiar contraseña</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="changePssw">
+            <div class="form-group">
+              <label for="currentPssw">Contraseña actual</label>
+              <input type="password" formControlName="currentPssw" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="newPssw">Nueva contraseña</label>
+              <input type="password" formControlName="newPssw" class="form-control" >
+            </div>
+            <div class="form-group">
+              <label for="verificationPssw">Confirmar contraseña</label>
+              <input type="password" formControlName="verificationPssw" class="form-control">
+            </div>
+          </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="SaveUserVehicle()" data-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  </div>

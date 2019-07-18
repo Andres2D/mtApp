@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <div class="container">
+    <h3>Usuarios</h3>
+  </div>
+  <br>
+  <br>
+  <div class="container">
+    <app-loading *ngIf="isLoading" class="col-12 text-center" style="font-size: 30px;"></app-loading>
+  </div>
+  <div class="row">
+    <!-- <i *ngIf="!isLoading" style="cursor: pointer; color: green; font-size: 30px;" class="fas fa-plus-square col-3"
+      [routerLink]="['/createservice']" routerLinkActive="router-link-active"></i> -->
+    <!--<div class="alert alert-success text-center col-9" role="alert">
+              Servicio creado correctamente.
+            </div>-->
+  </div>
+  <div *ngIf="!isLoading" class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <!-- <th scope="col">Opciones</th> -->
+          <th scope="col">Nombre de usuario</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let user of users">
+          <tr>
+            <!-- <th scope="row"><i style="cursor: pointer; color: #0079bf;" (click)="OpenModal(service)"
+                class="fas fa-edit mr-2" data-toggle="modal" data-target="#myModal"></i>
+              <i class="fas fa-trash-alt" style="cursor: pointer; color: orangered;" data-toggle="modal" data-target="#confirmationModal" (click)="OpenDeleteModal(service)"></i></th> -->
+            <td>{{user.nombre_usuario.nombre_usuario}}</td>
+            <td>{{user.nombre}}</td>
+            <td> {{user.p_apellido}} {{user.s_apellido}}</td>
+            <td> {{user.email}}</td>
+            <td> {{user.telefono}}</td>
+            <td> {{user.perfil.nombre}}</td>
+            <!-- <td [ngStyle]="{'color': service.estado == 'FINALIZADO' ? 'green' : (service.estado == 'EN PROGRESO' ? 'orange' : 'red')}">
+              <strong>{{service.estado}}</strong>
+            </td> -->
+            <!-- <td>
+              <p class="mb-0 text-center"><i class="far fa-comments text-center" style="cursor: pointer;font-size: 26px; color: #15aabf;" (click)="OpenComments(service)" data-toggle="modal" data-target="#commentsModal"></i></p>
+            </td> -->
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
