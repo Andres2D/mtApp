@@ -1,5 +1,5 @@
 {
     "configuration":{
-        "urlBackend": "http://motofoxapi.azurewebsites.net/"
+        "urlBackend": "https://motofoxapi.azurewebsites.net/"
     }
 }
