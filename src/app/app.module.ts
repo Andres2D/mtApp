@@ -15,6 +15,7 @@ import { CreateserviceComponent } from './components/service/createservice/creat
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EdituserComponent } from './components/usuarios/edituser/edituser.component';
+import { RouterGuardService } from './services/routerguard.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { EdituserComponent } from './components/usuarios/edituser/edituser.compo
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    RouterGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

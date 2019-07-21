@@ -13,7 +13,7 @@ import { configuration } from '../../configurations/applicationConfiguration.jso
 export class LoginComponent implements OnInit {
 
   forma: FormGroup;
-  errorMessage: any = '';
+  errorMessage = '';
   constructor(private http: HttpClient, private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
@@ -36,10 +36,10 @@ export class LoginComponent implements OnInit {
         console.log(data);
         if (data[0] == null) {
           console.log('Usuario no existe');
+          this.errorMessage = `Usuario ${this.forma.value.user} no existe`;
         } else if (data[0].contrasena ===  this.forma.value.password) {
           localStorage.setItem('userName', data[0].nombre_usuario);
           this.router.navigate(['/inicio']);
-          console.log('Inicio sesión');
           this.http.get(configuration.urlBackend + 'api/Users/GetPermissionData/' + data[0].id_login)
           .subscribe((pemissionCode: any) => {
             console.log(pemissionCode);
@@ -49,10 +49,12 @@ export class LoginComponent implements OnInit {
           });
         } else {
           console.log('Contraseña incorrecta');
+          this.errorMessage = 'Contraseña incorrecta';
         }
       },
       error => {
         console.log('Error: ', error);
+        this.errorMessage = 'Conexion rechazada';
       });
   }
 }

@@ -11,7 +11,7 @@
     <i *ngIf="!isLoading && userRole == '1'" style="cursor: pointer; color: green; font-size: 30px;" class="fas fa-plus-square col-3"
       [routerLink]="['/createservice']" routerLinkActive="router-link-active"></i>
   </div>
-  <div *ngIf="!isLoading" class="row">
+  <div *ngIf="!isLoading" class="row table-responsive">
     <div class="container text-center" *ngIf="!servicesData[0]">
         <i class="fas fa-tools mb-3" style="font-size: 90px;"></i>
         <h2>No se encontraron servicios asignados a este usuario</h2>

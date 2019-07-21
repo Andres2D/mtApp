@@ -7,8 +7,9 @@ import { Observable, Subject } from 'rxjs';
 export class LoginService {
 
   private subject = new Subject<any>();
+  staticStatus: boolean;
 
-  SendStatus(logIn: Boolean) {
+  SendStatus(logIn: boolean) {
     this.subject.next(logIn);
   }
 

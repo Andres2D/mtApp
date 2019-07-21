@@ -7,9 +7,10 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { VeicleComponent } from './components/veicle/veicle.component';
 import { CreateserviceComponent } from './components/service/createservice/createservice.component';
 import { EdituserComponent } from './components/usuarios/edituser/edituser.component';
+import { RouterGuardService } from './services/routerguard.service';
 
 const routes: Routes = [
-    { path: 'inicio', component: InicioComponent },
+    { path: 'inicio', component: InicioComponent, canActivate: [RouterGuardService] },
     { path: 'contact', component: ContactComponent },
     { path: 'services', component: ServiceComponent },
     { path: 'login', component: LoginComponent },

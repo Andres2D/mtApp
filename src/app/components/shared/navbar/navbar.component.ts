@@ -9,13 +9,14 @@ import { LoginService } from '../../../services/login.service';
 export class NavbarComponent implements OnInit {
 
   showNavbarOptions: boolean;
+  userName: any;
 
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-
     this.loginService.GetStatus().subscribe((data) => {
       this.showNavbarOptions = data;
+      this.userName = localStorage.getItem('userName');
     });
   }
 
