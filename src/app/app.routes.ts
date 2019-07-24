@@ -18,7 +18,8 @@ const routes: Routes = [
     { path: 'veicles', component: VeicleComponent },
     { path: 'createservice', component: CreateserviceComponent },
     { path: 'edituser', component: EdituserComponent },
-    { path: '**', pathMatch: 'full', redirectTo: 'login' }
+    { path: '**', pathMatch: 'full', redirectTo: 'login' },
+    { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];
 
 export const appRouting = RouterModule.forRoot(routes);

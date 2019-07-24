@@ -3,12 +3,13 @@
   <div class="row">
 <div class="col-md-5 mx-auto">
 <div id="first">
-  <div class="myform form ">
-      <div class="logo mb-3">
+  <div class="myform form">
+      <div class="logo mb-3" *ngIf="!isLoading">
         <div class="col-md-12 text-center">
             <i class="fas fa-user-circle" style="font-size: 100px; color: gray;"></i>
         </div>
     </div>
+    <app-loading class="col-md-12 text-center" *ngIf="isLoading"></app-loading>
     <h5 style="color: red;">{{errorMessage}}</h5>
     <form [formGroup]="forma">
       <div class="form-group">

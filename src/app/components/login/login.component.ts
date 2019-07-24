@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   forma: FormGroup;
   errorMessage = '';
+  isLoading = false;
   constructor(private http: HttpClient, private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   LogIn() {
+    this.isLoading = true;
     this.errorMessage = '';
     const request = {
       userName: this.forma.value.user,
@@ -51,8 +53,10 @@ export class LoginComponent implements OnInit {
           console.log('Contraseña incorrecta');
           this.errorMessage = 'Contraseña incorrecta';
         }
+        this.isLoading = false;
       },
       error => {
+        this.isLoading = false;
         console.log('Error: ', error);
         this.errorMessage = 'Conexion rechazada';
       });
