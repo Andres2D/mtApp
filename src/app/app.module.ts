@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EdituserComponent } from './components/usuarios/edituser/edituser.component';
 import { RouterGuardService } from './services/routerguard.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     UsuariosComponent,
     VeicleComponent,
     CreateserviceComponent,
-    EdituserComponent
+    EdituserComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
