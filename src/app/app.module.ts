@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EdituserComponent } from './components/usuarios/edituser/edituser.component';
 import { RouterGuardService } from './services/routerguard.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RouterGuardService } from './services/routerguard.service';
     HttpClientModule
   ],
   providers: [
-    RouterGuardService
+    RouterGuardService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

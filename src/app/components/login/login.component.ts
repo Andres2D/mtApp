@@ -35,29 +35,24 @@ export class LoginComponent implements OnInit {
 
     this.http.post(configuration.urlBackend + 'api/Login/Login', request)
       .subscribe((data: any) => {
-        console.log(data);
         if (data[0] == null) {
-          console.log('Usuario no existe');
           this.errorMessage = `Usuario ${this.forma.value.user} no existe`;
         } else if (data[0].contrasena ===  this.forma.value.password) {
           localStorage.setItem('userName', data[0].nombre_usuario);
           this.router.navigate(['/inicio']);
           this.http.get(configuration.urlBackend + 'api/Users/GetPermissionData/' + data[0].id_login)
           .subscribe((pemissionCode: any) => {
-            console.log(pemissionCode);
             localStorage.setItem('userRole', pemissionCode.id_tipo_usuario);
             localStorage.setItem('idUsuario', pemissionCode.id_usuario);
             this.loginService.SendStatus(true);
           });
         } else {
-          console.log('Contraseña incorrecta');
           this.errorMessage = 'Contraseña incorrecta';
         }
         this.isLoading = false;
       },
       error => {
         this.isLoading = false;
-        console.log('Error: ', error);
         this.errorMessage = 'Conexion rechazada';
       });
   }

@@ -10,7 +10,7 @@ import { EdituserComponent } from './components/usuarios/edituser/edituser.compo
 import { RouterGuardService } from './services/routerguard.service';
 
 const routes: Routes = [
-    { path: 'inicio', component: InicioComponent, canActivate: [RouterGuardService] },
+    { path: 'inicio', component: InicioComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'services', component: ServiceComponent },
     { path: 'login', component: LoginComponent },

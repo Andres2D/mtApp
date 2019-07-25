@@ -11,13 +11,7 @@ export class RouterGuardService implements CanActivate {
 constructor(private router: Router, private loginService: LoginService) { }
 
     canActivate() {
-        this.loginService.GetStatus().subscribe(data => {
-            console.log(data);
-            if (!data) {
-                this.router.navigate(['/']);
-                return false;
-            }
-        });
-        return true;
+        console.log(window.location);
+        return false;
     }
 }
