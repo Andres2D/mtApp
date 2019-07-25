@@ -21,7 +21,7 @@
         <tr>
           <th *ngIf="userRole == '1' || userRole == '2'" scope="col">Opciones</th>
           <th scope="col">Placa del vehiculo</th>
-          <th scope="col">Nombre del dueño</th>
+          <th *ngIf="userRole !== '3'" scope="col">Nombre del dueño</th>
           <th scope="col">Mecanico encargado</th>
           <th scope="col">Estado</th>
           <th scope="col">Comentarios</th>
@@ -35,7 +35,7 @@
               <i *ngIf="userRole == '1'" class="fas fa-trash-alt" style="cursor: pointer; color: orangered;" data-toggle="modal" data-target="#confirmationModal" (click)="OpenDeleteModal(service)"></i>
             </th>
             <td>{{service.vehiculo.placa}}</td>
-            <td>{{service.propietario.nombre}} {{service.propietario.p_apellido}}</td>
+            <td *ngIf="userRole !== '3'">{{service.propietario.nombre}} {{service.propietario.p_apellido}}</td>
             <td>{{service.mecanico.nombre}} {{service.mecanico.p_apellido}}</td>
             <td [ngStyle]="{'color': service.estado == 'FINALIZADO' ? 'green' : (service.estado == 'EN PROGRESO' ? 'orange' : 'red')}">
               <strong>{{service.estado}}</strong>
